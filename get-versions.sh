@@ -47,10 +47,10 @@ while IFS= read -r op; do
     jq -n '.releases |= [inputs]')
 
   if "$TESTING"; then
-    echo "$OS_VERSION/$op.json"
+    echo "$VERSION/$op.json"
     echo "$RESULT"
     break
   else
-    echo "$RESULT" > "$OS_VERSION/$op.json"
+    echo "$RESULT" > "$VERSION/$op.json"
   fi
 done <<<"$ALL_OPERATORS"
