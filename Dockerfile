@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apk add dumb-init
 
-COPY disk-cleanup.sh /
-RUN chmod +x /disk-cleanup.sh
+COPY get-versions.sh /
+RUN chmod +x /get-versions.sh
 
-ENTRYPOINT ["dumb-init", "/disk-cleanup.sh"]
+ENTRYPOINT ["dumb-init", "/get-versions.sh"]
