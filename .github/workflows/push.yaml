@@ -9,7 +9,7 @@ jobs:
   push:
     uses: stakater/.github/.github/workflows/push_container.yaml@v0.0.134
     with:
-      DOCKER_FILE_PATH: Dockerfile-shell
+      DOCKER_FILE_PATH: Dockerfile
       RELEASE_BRANCH: main
     secrets:
       CONTAINER_REGISTRY_URL: ghcr.io/stakater
