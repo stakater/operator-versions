@@ -4,9 +4,9 @@ Shell script to get all versions of OpenShift operators for an OpenShift cluster
 
 The shell script is packaged as a container image.
 
-The result of running the script is json files, one for each operator.
+The result of running the script is JSON files, one for each operator.
 
-The resulting json files need to be stored in a public folder, so Renovate can use them as a [custom datasource](https://docs.renovatebot.com/modules/datasource/custom/) to create version updates for operators.
+The resulting JSON files need to be stored in a public folder, so Renovate can use them as a [custom data-source](https://docs.renovatebot.com/modules/datasource/custom/) to create version updates for operators.
 
 Example output for the `loki-operator` for an OpenShift cluster on version 4.18.11:
 
