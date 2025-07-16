@@ -30,7 +30,7 @@ VERSION=${VERSION:-$OS_VERSION}
 
 # Put all files in a folder corresponding to the OpenShift cluster version
 if ! "$TESTING"; then
-  mkdir -p "$OS_VERSION"
+  mkdir -p "$VERSION"
 fi
 
 # Get the name of all operators in all catalogs
