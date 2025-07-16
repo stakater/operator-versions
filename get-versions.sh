@@ -31,8 +31,9 @@ VERSION=${VERSION:-$OS_VERSION}
 # Put all files in a folder corresponding to the OpenShift cluster version
 mkdir -p "$OS_VERSION"
 
-# Get the name of all operators in the Red Hat catalog
-ALL_RH_OPERATORS=$(oc get packagemanifests | grep 'Red Hat Operators' | awk '{print $1}')
+# Get the name of all operators in all catalogs
+# Skip the first line with the header
+ALL_OPERATORS=$(oc get packagemanifests | awk '{print $1}' | tail -n +2)
 
 # For each operator, get all available versions for the OpenShift cluster on the current version
 # Create a JSON document that conforms to the format of Renovate custom datasources
@@ -50,4 +51,4 @@ while IFS= read -r op; do
   else
     echo "$RESULT" > "$OS_VERSION/$op.json"
   fi
-done <<<"$ALL_RH_OPERATORS"
+done <<<"$ALL_OPERATORS"
