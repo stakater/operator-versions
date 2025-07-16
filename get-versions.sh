@@ -29,7 +29,9 @@ OS_VERSION=$(oc get clusterversion -o json | jq -r '.items[].spec.channel')
 VERSION=${VERSION:-$OS_VERSION}
 
 # Put all files in a folder corresponding to the OpenShift cluster version
-mkdir -p "$OS_VERSION"
+if ! "$TESTING"; then
+  mkdir -p "$OS_VERSION"
+fi
 
 # Get the name of all operators in all catalogs
 # Skip the first line with the header
