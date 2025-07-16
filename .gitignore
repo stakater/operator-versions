@@ -1,0 +1,5 @@
+# mkdocs documentation
+/site
+
+# vale
+styles/
