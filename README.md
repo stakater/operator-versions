@@ -2,6 +2,17 @@
 
 Shell script to get all versions of OpenShift operators for an OpenShift cluster. The background of the need for this script was to [get the latest versions of operators in the "redhat-operators" catalog](https://github.com/renovatebot/renovate/discussions/32180), so [Mend Renovate](https://www.mend.io/renovate/) could automatically create updates when new versions are available for an OpenShift cluster. Renovate does not have support for operator subscriptions or source catalogues. With inspiration from [a blog to get the operator version for every operator available](https://medium.com/red-hat-openshift-operator-versions/recently-i-was-asked-if-there-was-a-way-to-get-the-operator-version-for-every-operator-available-ceb27ed29923), this script was developed.
 
+```mermaid
+flowchart LR
+    Cluster[OpenShift cluster] -->|Run script| Result(Get the versions of each operator as JSON files)
+    Result --> |Store JSON| Public[Public location such as S3 bucket]
+    Renovate --> |Custom data-source| Public
+    GitOps <--> |Declarative CI| Cluster
+    Renovate[Renovate using custom manager] --> |Create dependency updates| GitOps
+```
+
+The script should be run on schedule, perhaps on daily basis, so the JSON files are always up-to-date.
+
 The shell script is packaged as a container image.
 
 The result of running the script is JSON files, one for each operator.
