@@ -36,6 +36,11 @@ Example output for the `loki-operator` for an OpenShift cluster on version 4.18.
 }
 ```
 
+The Renovate documentation describes custom data-sources, and here are two good blogs on the topic:
+
+- [`Renovate: No Datasource? No problem!`](https://secustor.dev/blog/renovate_custom_datasources/)
+- [`Custom Renovate datasource`](https://marcusnoble.co.uk/2023-10-04-custom-renovate-datasource/)
+
 ## Local development
 
 Prerequisites:
