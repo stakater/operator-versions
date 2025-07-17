@@ -1,0 +1,31 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  doc-qa:
+    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.134
+    with:
+      MD_CONFIG: .github/md_config.json
+      DOC_SRC: README.md
+      MD_LINT_CONFIG: .markdownlint.yaml
+  lint:
+    name: Shell lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run ShellCheck
+        uses: Azbagheri/shell-linter@v0.8.0
+        with:
+          path: "get-versions.sh"
+  build:
+    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.134
+    with:
+      DOCKER_FILE_PATH: Dockerfile
+      CONTAINER_REGISTRY_URL: ghcr.io/stakater
+    secrets:
+      CONTAINER_REGISTRY_USERNAME: ${{ github.actor }}
+      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
+      SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
