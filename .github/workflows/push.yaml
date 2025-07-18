@@ -7,7 +7,7 @@ on:
 
 jobs:
   push:
-    uses: stakater/.github/.github/workflows/push_container.yaml@v0.0.134
+    uses: stakater/.github/.github/workflows/push_container.yaml@v0.0.135
     with:
       DOCKER_FILE_PATH: Dockerfile
       RELEASE_BRANCH: main
