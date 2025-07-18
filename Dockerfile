@@ -10,10 +10,10 @@ RUN chmod +x /get-versions.sh
 
 ENTRYPOINT ["/get-versions.sh"]
 
-LABEL name="Stakater Operator Versions" \
+LABEL name="Operator Versions" \
       maintainer="Stakater <hello@stakater.com>" \
       vendor="Stakater" \
       release="1" \
-      summary="Operator Versions"
+      summary="Get the versions of all operators for an OpenShift cluster"
 
 CMD ["-h"]
