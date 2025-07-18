@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # Script to run on an OpenShift cluster to get all versions of operators
 

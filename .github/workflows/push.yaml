@@ -11,9 +11,12 @@ jobs:
     with:
       DOCKER_FILE_PATH: Dockerfile
       RELEASE_BRANCH: main
+      RH_CONTAINER_REGISTRY_URL: registry.redhat.io
     secrets:
       CONTAINER_REGISTRY_URL: ghcr.io/stakater
       CONTAINER_REGISTRY_USERNAME: ${{ github.actor }}
       CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
+      RH_CONTAINER_REGISTRY_USERNAME: ${{ secrets.REGISTRY_REDHAT_USERNAME }}
+      RH_CONTAINER_REGISTRY_PASSWORD: ${{ secrets.REGISTRY_REDHAT_PASSWORD }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
